@@ -1603,11 +1603,12 @@
     document.querySelectorAll(".fade-up").forEach(function(el){ io.observe(el); });
   })();
 
-  // Form: front-end stub (no backend wired). Replace with your form handler.
   (function(){
+    var FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_FORM_ID";
     var form = document.getElementById("rfpForm");
     var ok = document.getElementById("formConfirm");
     if (!form) return;
+    var submitBtn = form.querySelector(".btn-submit");
     form.addEventListener("submit", function(e){
       e.preventDefault();
       var required = form.querySelectorAll("[required]");
@@ -1621,10 +1622,23 @@
         valid = false; email.style.borderBottomColor = "#d65a5a";
       }
       if (!valid) return;
-      ok.classList.add("show");
-      form.reset();
-      ok.scrollIntoView({ behavior: "smooth", block: "center" });
-      setTimeout(function(){ ok.classList.remove("show"); }, 8000);
+
+      if (submitBtn) { submitBtn.disabled = true; }
+      fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      }).then(function(res){
+        if (!res.ok) throw new Error("Submission failed");
+        ok.classList.add("show");
+        form.reset();
+        ok.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(function(){ ok.classList.remove("show"); }, 8000);
+      }).catch(function(){
+        alert("Sorry — we couldn't submit your inquiry. Please email contracts@EficasConsulting.com.");
+      }).then(function(){
+        if (submitBtn) { submitBtn.disabled = false; }
+      });
     });
   })();
 </script>

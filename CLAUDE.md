@@ -15,7 +15,6 @@ capabilities statement PDF.
 
 ## Don'ts
 - No tracking scripts (Google Analytics, Meta Pixel) without asking.
-- No build step or framework. This is intentionally a single static HTML file.
 - Don't reformat unchanged sections when making targeted edits.
 
 ## Deploy
