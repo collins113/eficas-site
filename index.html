@@ -1,0 +1,1633 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Eficas Consulting — General Vendor & Contracted Services for Government Partners</title>
+<meta name="description" content="Eficas Consulting is a general vendor and contracted services provider serving state, county, and local government agencies — IT, construction, land management, neighborhood revitalization, and supply-side management." />
+<meta name="theme-color" content="#0F2540" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ==================================================================
+     EFICAS CONSULTING — Single-file marketing site
+     Aesthetic: editorial institutional. Civic credibility, not flash.
+     ================================================================== */
+
+  :root {
+    --ink:        #0F2540;   /* primary navy */
+    --ink-deep:   #08182A;
+    --ink-soft:   #2C3E55;
+    --paper:      #F5F1E8;   /* warm ivory background */
+    --paper-2:    #EAE3D2;
+    --paper-3:    #1A2F4A;   /* dark surface for inverted blocks */
+    --rule:       #C9B998;
+    --rule-soft:  #D9CFB5;
+    --ochre:      #B8862E;   /* accent */
+    --ochre-soft: #D6A84E;
+    --forest:     #2D4A3E;
+    --slate:      #5A6573;
+
+    --font-display: "Fraunces", "Times New Roman", serif;
+    --font-body:    "IBM Plex Sans", system-ui, sans-serif;
+    --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+    --maxw: 1200px;
+    --pad-x: clamp(20px, 4vw, 56px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Subtle paper grain overlay across the whole page */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.06  0 0 0 0 0.14  0 0 0 0 0.25  0 0 0 0.07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: .6;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+  main, header, footer { position: relative; z-index: 2; }
+
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid var(--ochre);
+    outline-offset: 3px;
+  }
+  img, svg { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+  .container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding-inline: var(--pad-x);
+  }
+
+  /* ----------------------------- Typography -------------------------- */
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.012em;
+    margin: 0;
+    font-variation-settings: "opsz" 60;
+  }
+  .display {
+    font-size: clamp(2.4rem, 5.6vw, 4.8rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 96;
+  }
+  .display em {
+    font-style: italic;
+    color: var(--ochre);
+    font-weight: 400;
+  }
+  .h-section {
+    font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    max-width: 22ch;
+  }
+  .h-sub {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+
+  p { margin: 0 0 1em; }
+  .lead { font-size: 1.18rem; line-height: 1.55; color: var(--ink-soft); max-width: 56ch; }
+
+  /* Small-caps mono "kicker" used to label sections like an annual report */
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: .76rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--slate);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .kicker .num {
+    color: var(--ochre);
+    font-weight: 500;
+  }
+  .kicker .bar {
+    width: 28px; height: 1px; background: var(--rule);
+    display: inline-block;
+  }
+
+  /* ============================ TOP STRIP ============================ */
+  .topstrip {
+    background: var(--ink-deep);
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 9px 0;
+    border-bottom: 1px solid #1f3550;
+  }
+  .topstrip .container {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px;
+  }
+  .topstrip .left { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .topstrip .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ochre-soft);
+    display: inline-block; vertical-align: middle; margin-right: 8px;
+  }
+  .topstrip .right { color: #8aa0bd; }
+  @media (max-width: 600px) {
+    .topstrip .right { display: none; }
+  }
+
+  /* =============================== NAV =============================== */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(245, 241, 232, 0.92);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .nav-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 0;
+    gap: 24px;
+  }
+  .brand {
+    display: inline-flex; align-items: baseline; gap: 10px;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .brand .mark {
+    color: var(--ink);
+  }
+  .brand .sub {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 400;
+  }
+  nav.primary ul {
+    display: flex; gap: 28px;
+    list-style: none; margin: 0; padding: 0;
+    align-items: center;
+  }
+  nav.primary a {
+    font-size: .92rem;
+    color: var(--ink-soft);
+    transition: color .2s;
+  }
+  nav.primary a:hover { color: var(--ochre); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 11px 20px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: .92rem;
+    letter-spacing: .01em;
+    border: 1px solid transparent;
+    transition: all .2s ease;
+    line-height: 1;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-primary:hover { background: var(--ochre); color: var(--ink-deep); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn .arrow { display: inline-block; transition: transform .25s; }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  .menu-btn { display: none; }
+  @media (max-width: 880px) {
+    nav.primary ul { display: none; }
+    nav.primary.open ul {
+      display: flex;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--paper);
+      padding: 12px var(--pad-x) 20px;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    nav.primary.open li { width: 100%; }
+    nav.primary.open a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule-soft);
+      font-size: 1rem;
+    }
+    .menu-btn {
+      display: inline-flex;
+      align-items: center; gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--ink);
+      font-family: var(--font-mono);
+      font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--ink);
+    }
+    .nav-cta { display: none; }
+  }
+
+  /* ============================== HERO =============================== */
+  .hero {
+    padding-top: clamp(48px, 8vw, 100px);
+    padding-bottom: clamp(60px, 10vw, 120px);
+    border-bottom: 1px solid var(--rule-soft);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: end;
+  }
+  @media (max-width: 920px) {
+    .hero-grid { grid-template-columns: 1fr; }
+  }
+  .hero .kicker { margin-bottom: 28px; }
+  .hero .display { margin-bottom: 28px; max-width: 16ch; }
+  .hero .lead { margin-bottom: 36px; }
+  .hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* The fact-sheet panel on the right of the hero — like a doc header */
+  .factsheet {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .factsheet::before {
+    content: "";
+    position: absolute;
+    top: -1px; right: -1px;
+    width: 36px; height: 36px;
+    background: var(--ochre);
+  }
+  .factsheet h3 {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ochre-soft);
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+  .factsheet dl {
+    margin: 0;
+    display: grid;
+    gap: 14px;
+  }
+  .factsheet dt {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #8aa0bd;
+    margin-bottom: 2px;
+  }
+  .factsheet dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.18rem;
+    font-weight: 400;
+    line-height: 1.25;
+    border-bottom: 1px solid #1e3a5a;
+    padding-bottom: 12px;
+  }
+  .factsheet dd:last-child { border-bottom: 0; padding-bottom: 0; }
+
+  /* ============================ SECTIONS ============================= */
+  section {
+    padding-block: clamp(60px, 9vw, 110px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(24px, 4vw, 64px);
+    margin-bottom: clamp(36px, 5vw, 64px);
+    align-items: end;
+  }
+  @media (max-width: 760px) {
+    .section-head { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .section-head .right p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 54ch;
+    margin: 0;
+  }
+
+  /* ========================= CAPABILITIES (01) ======================= */
+  .caps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+  @media (max-width: 720px) {
+    .caps { grid-template-columns: 1fr; }
+  }
+  .cap {
+    padding: 36px 32px 32px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    transition: background .25s;
+  }
+  .cap:hover { background: rgba(184, 134, 46, 0.06); }
+  .cap-num {
+    font-family: var(--font-mono);
+    font-size: .76rem;
+    letter-spacing: .2em;
+    color: var(--ochre);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .cap h3 {
+    font-size: 1.65rem;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .cap p {
+    color: var(--ink-soft);
+    font-size: .98rem;
+    line-height: 1.55;
+    margin: 0 0 16px;
+  }
+  .cap ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    letter-spacing: .04em;
+    color: var(--slate);
+  }
+  .cap ul li {
+    padding: 6px 0;
+    border-top: 1px dashed var(--rule-soft);
+  }
+  .cap ul li::before {
+    content: "→ ";
+    color: var(--ochre);
+    margin-right: 4px;
+  }
+
+  /* ======================= WHO WE SERVE (02) ========================= */
+  .served {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .served {
+    margin: 0 calc(-1 * var(--pad-x));
+    padding-inline: var(--pad-x);
+  }
+  /* Reset background-bleed wrapper */
+  .served-wrap {
+    background: var(--ink);
+    color: var(--paper);
+    padding-block: clamp(60px, 9vw, 110px);
+    border-bottom: 1px solid var(--rule-soft);
+    position: relative;
+  }
+  .served-wrap .kicker { color: var(--ochre-soft); }
+  .served-wrap .kicker .bar { background: #2a4567; }
+  .served-wrap .h-section { color: var(--paper); }
+  .served-wrap .lead { color: #b9c8db; max-width: 50ch; }
+  .served-list {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid #1e3a5a;
+  }
+  @media (max-width: 720px) {
+    .served-list { grid-template-columns: 1fr; }
+  }
+  .served-list .item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid #1e3a5a;
+  }
+  .served-list .item:nth-child(odd) { padding-right: 32px; }
+  .served-list .item:nth-child(even) { padding-left: 32px; border-left: 1px solid #1e3a5a; }
+  @media (max-width: 720px) {
+    .served-list .item:nth-child(even) { border-left: 0; padding-left: 0; }
+    .served-list .item:nth-child(odd) { padding-right: 0; }
+  }
+  .served-list .item .name {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .served-list .item .code {
+    font-family: var(--font-mono);
+    font-size: .74rem;
+    letter-spacing: .14em;
+    color: #8aa0bd;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ============================ PROCESS (03) ========================= */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--ink);
+  }
+  @media (max-width: 880px) {
+    .steps { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .steps { grid-template-columns: 1fr; }
+  }
+  .step {
+    padding: 32px 24px 28px;
+    border-right: 1px solid var(--rule-soft);
+    position: relative;
+  }
+  .step:last-child { border-right: 0; }
+  .step .num {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    line-height: 1;
+    color: var(--ochre);
+    font-weight: 400;
+    font-variation-settings: "opsz" 120;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .step h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .step p {
+    color: var(--ink-soft);
+    font-size: .92rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ====================== SIGNATURE — REVITALIZATION (04) ============ */
+  .signature {
+    background: var(--paper-2);
+    margin: 0 calc(-1 * var(--pad-x));
+    padding-inline: var(--pad-x);
+    padding-block: clamp(60px, 9vw, 110px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: clamp(28px, 5vw, 72px);
+    align-items: start;
+  }
+  @media (max-width: 880px) {
+    .sig-grid { grid-template-columns: 1fr; }
+  }
+  .sig-left .h-section {
+    margin-bottom: 22px;
+    max-width: none;
+  }
+  .sig-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.35;
+    color: var(--ink-soft);
+    max-width: 36ch;
+    border-left: 3px solid var(--ochre);
+    padding-left: 22px;
+    margin-top: 28px;
+    font-weight: 400;
+  }
+  .sig-right {
+    background: var(--paper);
+    padding: 36px 32px;
+    border: 1px solid var(--rule);
+  }
+  .sig-right h4 {
+    font-family: var(--font-mono);
+    font-size: .76rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+  .sig-right ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: scope;
+  }
+  .sig-right ol li {
+    counter-increment: scope;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule-soft);
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 18px;
+    align-items: baseline;
+  }
+  .sig-right ol li:first-child { border-top: 0; }
+  .sig-right ol li::before {
+    content: counter(scope, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    color: var(--slate);
+    letter-spacing: .08em;
+  }
+  .sig-right ol li strong {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.15rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .sig-right ol li span {
+    color: var(--ink-soft);
+    font-size: .94rem;
+    line-height: 1.5;
+  }
+
+  /* ============================ ABOUT (05) =========================== */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: 64px;
+    border-top: 1px solid var(--rule);
+  }
+  @media (max-width: 880px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .pillars { grid-template-columns: 1fr; } }
+  .pillar {
+    padding: 28px 24px 26px;
+    border-right: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .pillar:last-child { border-right: 0; }
+  @media (max-width: 880px) {
+    .pillar:nth-child(2n) { border-right: 0; }
+  }
+  @media (max-width: 520px) {
+    .pillar { border-right: 0; }
+  }
+  .pillar .icon {
+    width: 28px; height: 28px;
+    color: var(--ochre);
+    margin-bottom: 16px;
+  }
+  .pillar h4 {
+    font-size: 1.18rem;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .pillar p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: .92rem;
+    line-height: 1.5;
+  }
+
+  /* Company data table — SEC-filing style */
+  .data-block {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(28px, 5vw, 72px);
+    align-items: start;
+  }
+  @media (max-width: 880px) {
+    .data-block { grid-template-columns: 1fr; }
+  }
+  .data-block .left p { color: var(--ink-soft); font-size: 1rem; max-width: 38ch; }
+  .data-block .download {
+    margin-top: 18px;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    transition: background .2s;
+  }
+  .data-block .download:hover { background: var(--ochre); color: var(--ink-deep); }
+  .data-block .download svg { width: 14px; height: 14px; }
+
+  table.company-data {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    border-top: 1px solid var(--ink);
+  }
+  table.company-data tr { border-bottom: 1px solid var(--rule-soft); }
+  table.company-data th {
+    text-align: left;
+    padding: 12px 0;
+    color: var(--slate);
+    font-weight: 400;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    width: 38%;
+    vertical-align: top;
+  }
+  table.company-data td {
+    padding: 12px 0;
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: .95rem;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* ============================== FAQ (06) =========================== */
+  .faq-list {
+    border-top: 1px solid var(--ink);
+  }
+  .faq-item { border-bottom: 1px solid var(--rule-soft); }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 24px 0;
+    display: grid;
+    grid-template-columns: 40px 1fr 28px;
+    align-items: center;
+    gap: 18px;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    transition: color .2s;
+  }
+  .faq-item summary:hover { color: var(--ochre); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary .q-num {
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    color: var(--slate);
+    letter-spacing: .08em;
+  }
+  .faq-item summary .plus {
+    justify-self: end;
+    width: 18px; height: 18px;
+    position: relative;
+    transition: transform .25s;
+  }
+  .faq-item summary .plus::before,
+  .faq-item summary .plus::after {
+    content: ""; position: absolute; inset: 0; margin: auto;
+    background: var(--ink);
+  }
+  .faq-item summary .plus::before { width: 18px; height: 1.5px; }
+  .faq-item summary .plus::after  { width: 1.5px; height: 18px; transition: transform .25s; }
+  .faq-item[open] summary .plus::after { transform: scaleY(0); }
+  .faq-item .answer {
+    padding: 0 0 28px 58px;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 70ch;
+  }
+  @media (max-width: 600px) {
+    .faq-item summary { grid-template-columns: 32px 1fr 22px; font-size: 1.05rem; }
+    .faq-item .answer { padding-left: 0; }
+  }
+
+  /* =========================== RFP INTAKE (07) ======================= */
+  .rfp {
+    background: var(--ink);
+    color: var(--paper);
+    margin: 0 calc(-1 * var(--pad-x));
+    padding-inline: var(--pad-x);
+    padding-block: clamp(60px, 9vw, 110px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .rfp .kicker { color: var(--ochre-soft); }
+  .rfp .kicker .bar { background: #2a4567; }
+  .rfp .h-section { color: var(--paper); }
+  .rfp .lead { color: #b9c8db; }
+  .rfp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+  @media (max-width: 880px) { .rfp-grid { grid-template-columns: 1fr; } }
+  .rfp-contact {
+    border-top: 1px solid #1e3a5a;
+    margin-top: 36px;
+    padding-top: 28px;
+    display: grid;
+    gap: 18px;
+  }
+  .rfp-contact .row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .rfp-contact .label {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #8aa0bd;
+  }
+  .rfp-contact .val {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+  }
+  .rfp-contact a:hover { color: var(--ochre-soft); }
+
+  /* Form */
+  form.intake {
+    display: grid;
+    gap: 18px;
+  }
+  form.intake .row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 600px) { form.intake .row2 { grid-template-columns: 1fr; } }
+  form.intake label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #8aa0bd;
+    margin-bottom: 7px;
+  }
+  form.intake input,
+  form.intake select,
+  form.intake textarea {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #2a4567;
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 10px 0;
+    transition: border-color .2s;
+  }
+  form.intake input:focus,
+  form.intake select:focus,
+  form.intake textarea:focus {
+    outline: none;
+    border-bottom-color: var(--ochre-soft);
+  }
+  form.intake textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+  form.intake select { color: var(--paper); }
+  form.intake select option { background: var(--ink); color: var(--paper); }
+  form.intake .submit-row { display: flex; justify-content: flex-end; margin-top: 10px; }
+  .btn-submit {
+    background: var(--ochre);
+    color: var(--ink-deep);
+    padding: 14px 28px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: .95rem;
+    letter-spacing: .02em;
+    transition: background .2s, color .2s;
+    cursor: pointer;
+  }
+  .btn-submit:hover { background: var(--paper); }
+  .form-confirm {
+    display: none;
+    background: rgba(184, 134, 46, 0.15);
+    border: 1px solid var(--ochre);
+    padding: 16px 18px;
+    font-size: .95rem;
+    color: var(--paper);
+  }
+  .form-confirm.show { display: block; }
+
+  /* ============================== FOOTER ============================= */
+  footer.foot {
+    background: var(--ink-deep);
+    color: #b9c8db;
+    padding-block: 48px 28px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 36px;
+    margin-bottom: 36px;
+  }
+  @media (max-width: 880px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .foot-grid { grid-template-columns: 1fr; } }
+  .foot-brand .brand .mark { color: var(--paper); }
+  .foot-brand .brand .sub { color: #8aa0bd; }
+  .foot-brand p {
+    margin-top: 16px;
+    font-size: .92rem;
+    color: #8aa0bd;
+    max-width: 36ch;
+    line-height: 1.5;
+  }
+  .foot-col h5 {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ochre-soft);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .foot-col ul {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 8px;
+  }
+  .foot-col a {
+    font-size: .92rem; color: #b9c8db;
+  }
+  .foot-col a:hover { color: var(--ochre-soft); }
+  .foot-bottom {
+    border-top: 1px solid #1e3a5a;
+    padding-top: 22px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #6c8099;
+  }
+  .disclaimer-block {
+    background: rgba(255,255,255,0.03);
+    border-left: 2px solid var(--ochre);
+    padding: 14px 18px;
+    margin-top: 24px;
+    font-size: .82rem;
+    line-height: 1.55;
+    color: #8aa0bd;
+    max-width: 70ch;
+  }
+
+  /* ============================ MOTION =============================== */
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-up.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== TOP STRIP ===================== -->
+<div class="topstrip" role="banner">
+  <div class="container">
+    <div class="left">
+      <span><span class="dot"></span>Eficas Consulting — Capabilities Overview</span>
+    </div>
+    <div class="right">
+      Effective service · Trusted delivery · Public partners
+    </div>
+  </div>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="container nav-row">
+    <a href="#top" class="brand" aria-label="Eficas Consulting home">
+      <span class="mark">Eficas</span>
+      <span class="sub">Consulting</span>
+    </a>
+    <nav class="primary" id="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#served">Who We Serve</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a href="#rfp" class="btn btn-primary nav-cta">
+      Request a Quote <span class="arrow">→</span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="primary-nav" id="menuBtn">
+      Menu
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <span class="kicker"><span class="bar"></span><span class="num">00</span> · Public-sector general vendor</span>
+        <h1 class="display">One vendor.<br/>Many capabilities.<br/><em>Built for public partners.</em></h1>
+        <p class="lead">
+          Eficas Consulting is a general vendor and contracted services provider serving state,
+          county, and local government agencies. We deliver reliable, compliant, cost-effective
+          solutions across a broad portfolio of public-sector needs &mdash; reducing procurement
+          overhead and the burden of managing many small contractors.
+        </p>
+        <div class="ctas">
+          <a href="#rfp" class="btn btn-primary">Request a Quote <span class="arrow">→</span></a>
+          <a href="#capabilities" class="btn btn-ghost">View Capabilities</a>
+        </div>
+      </div>
+      <aside class="factsheet" aria-label="Vendor fact sheet">
+        <h3>Vendor Fact Sheet</h3>
+        <dl>
+          <div>
+            <dt>Engagement Type</dt>
+            <dd>RFP · RFQ · ITB · Direct PO</dd>
+          </div>
+          <div>
+            <dt>Service Area</dt>
+            <dd>[State / Multi-state placeholder]</dd>
+          </div>
+          <div>
+            <dt>Capability Areas</dt>
+            <dd>Six service lines, one accountable vendor</dd>
+          </div>
+          <div>
+            <dt>Registrations</dt>
+            <dd>SAM.gov · State Vendor Portals [pending]</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CAPABILITIES (01) ===================== -->
+<section id="capabilities">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="left">
+        <span class="kicker"><span class="bar"></span><span class="num">01</span> · Capabilities</span>
+        <h2 class="h-section">Six service lines. One accountable vendor.</h2>
+      </div>
+      <div class="right">
+        <p>
+          Eficas operates as a general vendor across a broad set of public-sector
+          categories. Each line is delivered with the same compliance discipline,
+          documented reporting, and single-POC accountability that procurement
+          officers and project managers count on.
+        </p>
+      </div>
+    </div>
+
+    <div class="caps">
+      <article class="cap">
+        <span class="cap-num">01 / IT</span>
+        <h3>IT Services</h3>
+        <p>Infrastructure, support, procurement, and integration tailored to public-sector environments and security postures.</p>
+        <ul>
+          <li>Hardware &amp; software procurement</li>
+          <li>Network &amp; endpoint management</li>
+          <li>Help-desk &amp; field support</li>
+          <li>Systems integration</li>
+        </ul>
+      </article>
+      <article class="cap">
+        <span class="cap-num">02 / BUILD</span>
+        <h3>Construction &amp; Facilities</h3>
+        <p>Light commercial construction, renovations, repairs, and public-works support with full insurance and bonding compliance.</p>
+        <ul>
+          <li>Light commercial &amp; renovations</li>
+          <li>Public-works support scopes</li>
+          <li>Bonded subcontractor coordination</li>
+          <li>Prevailing-wage compliance</li>
+        </ul>
+      </article>
+      <article class="cap">
+        <span class="cap-num">03 / LAND</span>
+        <h3>Land Management</h3>
+        <p>Site maintenance, lot clearing, mowing, grounds upkeep, and environmental and right-of-way maintenance for county and municipal parcels.</p>
+        <ul>
+          <li>Lot clearing &amp; mowing</li>
+          <li>Grounds &amp; ROW upkeep</li>
+          <li>Environmental site maintenance</li>
+          <li>Routine &amp; on-call service</li>
+        </ul>
+      </article>
+      <article class="cap">
+        <span class="cap-num">04 / REVITALIZE</span>
+        <h3>Neighborhood Revitalization</h3>
+        <p>Community development support, blight remediation, board-up and clean-out, facade and lot improvements, and multi-trade coordination.</p>
+        <ul>
+          <li>Blight remediation</li>
+          <li>Board-up &amp; clean-out</li>
+          <li>Facade &amp; lot improvements</li>
+          <li>Multi-trade scope management</li>
+        </ul>
+      </article>
+      <article class="cap">
+        <span class="cap-num">05 / SUPPLY</span>
+        <h3>Supply-Side Management</h3>
+        <p>Sourcing and fulfillment for medical supplies, local government equipment, and office supplies — with recurring-purchase and JIT delivery options.</p>
+        <ul>
+          <li>Medical supplies</li>
+          <li>Local government equipment</li>
+          <li>Office supplies &amp; consumables</li>
+          <li>Recurring &amp; JIT programs</li>
+        </ul>
+      </article>
+      <article class="cap">
+        <span class="cap-num">06 / COORDINATE</span>
+        <h3>Program &amp; Vendor Coordination</h3>
+        <p>Single-POC management of multi-trade scopes and supply contracts, with documented reporting and prevailing-wage compliance where applicable.</p>
+        <ul>
+          <li>Multi-trade scope management</li>
+          <li>Documented progress reporting</li>
+          <li>Subcontractor &amp; vendor oversight</li>
+          <li>Close-out documentation</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHO WE SERVE (02) ===================== -->
+<div class="served-wrap" id="served">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="left">
+        <span class="kicker"><span class="bar"></span><span class="num">02</span> · Who we serve</span>
+        <h2 class="h-section">Built for public-sector buyers.</h2>
+      </div>
+      <div class="right">
+        <p class="lead">
+          We work with the agencies, authorities, and districts that fund and deliver
+          public services. Our processes, insurance, bonding, and reporting are
+          structured to meet public procurement requirements from day one.
+        </p>
+      </div>
+    </div>
+
+    <div class="served-list fade-up">
+      <div class="item">
+        <span class="name">State Agencies</span>
+        <span class="code">RFP · RFQ · ITB</span>
+      </div>
+      <div class="item">
+        <span class="name">County Governments</span>
+        <span class="code">PO · Master Service</span>
+      </div>
+      <div class="item">
+        <span class="name">Municipalities</span>
+        <span class="code">Annual contract</span>
+      </div>
+      <div class="item">
+        <span class="name">School &amp; Special Districts</span>
+        <span class="code">Cooperative purchasing</span>
+      </div>
+      <div class="item">
+        <span class="name">Public Housing Authorities</span>
+        <span class="code">HUD-aligned scopes</span>
+      </div>
+      <div class="item">
+        <span class="name">Regional Development Authorities</span>
+        <span class="code">Program partner</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PROCESS (03) ===================== -->
+<section id="process">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="left">
+        <span class="kicker"><span class="bar"></span><span class="num">03</span> · Process</span>
+        <h2 class="h-section">How we deliver, end&#8209;to&#8209;end.</h2>
+      </div>
+      <div class="right">
+        <p>
+          A predictable, documented engagement model that fits public-procurement
+          workflows &mdash; from solicitation response to project close-out and
+          ongoing reporting.
+        </p>
+      </div>
+    </div>
+
+    <div class="steps fade-up">
+      <div class="step">
+        <span class="num">01</span>
+        <h4>Solicitation review</h4>
+        <p>We review the RFP / RFQ / ITB or direct inquiry, confirm fit, and identify capability lines, compliance, and bonding requirements.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h4>Scoping &amp; proposal</h4>
+        <p>A compliant, itemized proposal &mdash; pass-through costs and service fees broken out, schedule defined, and references provided.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h4>Award &amp; mobilization</h4>
+        <p>Contract execution, insurance and bonding documentation, subcontractor onboarding, and a clear single point of contact.</p>
+      </div>
+      <div class="step">
+        <span class="num">04</span>
+        <h4>Delivery &amp; reporting</h4>
+        <p>Documented delivery, progress reporting on the agency's schedule, and a clean close-out package with all required certifications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SIGNATURE WORK (04) ===================== -->
+<div class="signature" id="signature">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="left">
+        <span class="kicker"><span class="bar"></span><span class="num">04</span> · Signature work</span>
+        <h2 class="h-section">Neighborhood revitalization, delivered as a coordinated program.</h2>
+      </div>
+      <div class="right">
+        <p>
+          Revitalization scopes are where Eficas's general-vendor model pays off
+          most. One contract, one accountable partner, and one reporting interface
+          across what would otherwise be a dozen small contractors.
+        </p>
+      </div>
+    </div>
+
+    <div class="sig-grid fade-up">
+      <div class="sig-left">
+        <p class="lead">
+          When a county or municipality needs to move on blight, vacant lots, or
+          facade improvements at scale, the procurement burden of issuing and
+          managing many small contracts can stall the work. Eficas takes on that
+          coordination &mdash; sourcing local labor, managing trades, fulfilling
+          supplies, and producing the documentation grants and councils require.
+        </p>
+        <div class="sig-quote">
+          One contract. One accountable partner. One reporting interface across a multi-trade revitalization program.
+        </div>
+      </div>
+      <div class="sig-right">
+        <h4>What's typically in scope</h4>
+        <ol>
+          <li>
+            <strong>Site assessment &amp; planning support</strong>
+            <span>Walk-throughs, scope definition, and pricing on a parcel-by-parcel basis with documentation suitable for council or grant review.</span>
+          </li>
+          <li>
+            <strong>Multi-trade coordination</strong>
+            <span>Subcontractor selection, scheduling, insurance and bonding compliance, and on-site oversight across trades.</span>
+          </li>
+          <li>
+            <strong>Supply fulfillment</strong>
+            <span>Equipment, materials, and consumables sourced through our supply-side program &mdash; with preference for local suppliers.</span>
+          </li>
+          <li>
+            <strong>Progress &amp; close-out reporting</strong>
+            <span>Photo documentation, milestone reporting on the agency's schedule, and a tidy close-out package on completion.</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ABOUT (05) ===================== -->
+<section id="about">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="left">
+        <span class="kicker"><span class="bar"></span><span class="num">05</span> · About Eficas</span>
+        <h2 class="h-section">Why public partners choose Eficas.</h2>
+      </div>
+      <div class="right">
+        <p>
+          The Eficas name plays on the Latin and Spanish root <em>eficaz</em>
+          &mdash; effective. We're built to be exactly that for public-sector
+          buyers: reliable, compliant, and easy to work with across multiple
+          service lines.
+        </p>
+      </div>
+    </div>
+
+    <div class="pillars fade-up">
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+          <path d="M3 12L9 18 21 6"/>
+        </svg>
+        <h4>Single accountability</h4>
+        <p>One vendor, one contract, one POC across multiple service categories &mdash; eliminating coordination overhead.</p>
+      </div>
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+          <path d="M12 2L3 6v6c0 5 4 9 9 10 5-1 9-5 9-10V6l-9-4z"/>
+        </svg>
+        <h4>Compliance-first</h4>
+        <p>Insurance, bonding, prevailing-wage, MWBE participation, and documented reporting built into every engagement.</p>
+      </div>
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>
+        </svg>
+        <h4>Local sourcing</h4>
+        <p>We prioritize local subcontractors, suppliers, and labor to support community economic impact and shorten lead times.</p>
+      </div>
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+          <path d="M4 7h16M4 12h16M4 17h10"/>
+        </svg>
+        <h4>Transparent pricing</h4>
+        <p>Flat-fee or competitively bid on every scope, with itemized quotes separating pass-through costs from service fees.</p>
+      </div>
+    </div>
+
+    <div class="data-block fade-up">
+      <div class="left">
+        <span class="kicker"><span class="bar"></span><span class="num">REF</span> · Vendor data</span>
+        <h3 class="h-sub" style="margin-top:14px;margin-bottom:10px;">Company data &amp; registrations</h3>
+        <p>
+          Use this snapshot for vendor on-boarding. Full registration details and
+          insurance certificates are available on request.
+        </p>
+        <a href="Eficas_Consulting_Capabilities_Statement.pdf" class="download" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+            <path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/>
+          </svg>
+          Capabilities Statement (PDF)
+        </a>
+      </div>
+      <table class="company-data">
+        <tbody>
+          <tr><th>Legal Name</th><td>Eficas Consulting LLC</td></tr>
+          <tr><th>Entity Type</th><td>Limited Liability Company</td></tr>
+          <tr><th>State of Formation</th><td>[State Placeholder]</td></tr>
+          <tr><th>Year Established</th><td>[Year Placeholder]</td></tr>
+          <tr><th>UEI (SAM.gov)</th><td>[UEI Placeholder]</td></tr>
+          <tr><th>CAGE Code</th><td>[CAGE Placeholder]</td></tr>
+          <tr><th>EIN</th><td>[EIN Placeholder]</td></tr>
+          <tr><th>NAICS (representative)</th><td>541512 · 236220 · 561730 · 423450 · 453210 · 561210</td></tr>
+          <tr><th>Service Area</th><td>[State / Multi-state Placeholder]</td></tr>
+          <tr><th>Bonding Capacity</th><td>[Single / Aggregate Placeholder]</td></tr>
+          <tr><th>Certifications</th><td>[SBA · MBE · DBE · SDVOSB · 8(a) — list once obtained]</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ (06) ===================== -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="left">
+        <span class="kicker"><span class="bar"></span><span class="num">06</span> · Frequently asked</span>
+        <h2 class="h-section">Common questions from procurement teams.</h2>
+      </div>
+      <div class="right">
+        <p>
+          Quick answers to the questions buyers ask before issuing a solicitation
+          or direct purchase order. Don't see your question here? Reach out
+          through the form below.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-list fade-up">
+      <details class="faq-item">
+        <summary><span class="q-num">01</span><span>Are you registered on SAM.gov and on state vendor portals?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="answer">
+          Eficas Consulting is in the process of completing SAM.gov registration to obtain UEI
+          and CAGE codes, and is registering on relevant state and county vendor portals in our
+          service area. Current registration status is available on request.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q-num">02</span><span>Do you self-perform or subcontract?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="answer">
+          Both. Eficas self-performs supply, coordination, and program-management work, and engages
+          qualified, insured, and bonded subcontractors for specialized trades. Subcontractor
+          documentation and oversight remain Eficas's responsibility under a single contract.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q-num">03</span><span>What is your insurance and bonding capacity?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="answer">
+          Eficas maintains general liability and workers' compensation coverage, and works with a
+          bonding partner for project-specific surety. Certificates of insurance and bonding-capacity
+          letters are provided with proposal submissions and are available upon request.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q-num">04</span><span>Can you respond to RFPs, RFQs, and ITBs?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="answer">
+          Yes. Eficas responds to RFPs, RFQs, ITBs, and direct purchase orders for any of our
+          six capability lines. We can also serve as a single-point general vendor on
+          multi-line solicitations. Send solicitation packages through the form below or
+          directly to <a href="mailto:contracts@EficasConsulting.com">contracts@EficasConsulting.com</a>.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q-num">05</span><span>What geographic areas do you serve?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="answer">
+          Our primary service area is [State / Region placeholder]. We can extend to additional
+          states for the right scope and engagement size &mdash; particularly for supply-side
+          and program-coordination work where geography is less constraining.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q-num">06</span><span>How do you handle prevailing wage / Davis-Bacon?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="answer">
+          On scopes subject to prevailing-wage or Davis-Bacon requirements, Eficas applies the
+          governing wage determination across all on-site labor (in-house and subcontracted),
+          maintains certified payroll records, and submits the required reporting on the
+          schedule your agency specifies.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q-num">07</span><span>What is your minimum and maximum contract size?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="answer">
+          Eficas takes on engagements from single-PO purchases up through multi-year program
+          contracts. For larger awards we may team with bonded prime or subcontractor partners
+          to deliver the full scope under one accountable interface.
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="q-num">08</span><span>How do you ensure supply continuity for medical and office goods?</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="answer">
+          Through diversified supplier relationships, optional recurring-purchase programs,
+          and just-in-time delivery arrangements. For medical supply scopes specifically, we
+          can establish minimum on-hand levels and replenishment triggers tailored to the
+          agency's operational tempo.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RFP INTAKE (07) ===================== -->
+<div class="rfp" id="rfp">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="left">
+        <span class="kicker"><span class="bar"></span><span class="num">07</span> · Request a quote</span>
+        <h2 class="h-section">Send us your solicitation, or tell us what you need.</h2>
+      </div>
+      <div class="right">
+        <p class="lead">
+          For solicitation responses, direct purchase orders, capability questions, or general
+          inquiries &mdash; submit the form or reach the team directly. We acknowledge all
+          procurement inquiries within one business day.
+        </p>
+      </div>
+    </div>
+
+    <div class="rfp-grid fade-up">
+      <div class="rfp-left">
+        <div class="rfp-contact">
+          <div class="row">
+            <span class="label">Email</span>
+            <span class="val"><a href="mailto:contracts@EficasConsulting.com">contracts@EficasConsulting.com</a></span>
+          </div>
+          <div class="row">
+            <span class="label">Phone</span>
+            <span class="val">[Phone Placeholder]</span>
+          </div>
+          <div class="row">
+            <span class="label">Mail</span>
+            <span class="val">[Street Address Placeholder]<br/>[City, State ZIP Placeholder]</span>
+          </div>
+          <div class="row">
+            <span class="label">Web</span>
+            <span class="val">EficasConsulting.com</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="rfp-right intake" id="rfpForm" novalidate>
+        <div class="row2">
+          <div>
+            <label for="f-name">Your Name</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name"/>
+          </div>
+          <div>
+            <label for="f-agency">Agency / Organization</label>
+            <input id="f-agency" name="agency" type="text" required/>
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" required autocomplete="email"/>
+          </div>
+          <div>
+            <label for="f-role">Role / Title</label>
+            <input id="f-role" name="role" type="text"/>
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label for="f-solicit">Solicitation # (optional)</label>
+            <input id="f-solicit" name="solicit" type="text"/>
+          </div>
+          <div>
+            <label for="f-area">Capability Area</label>
+            <select id="f-area" name="area">
+              <option value="">— Select —</option>
+              <option value="it">IT Services</option>
+              <option value="build">Construction &amp; Facilities</option>
+              <option value="land">Land Management</option>
+              <option value="revit">Neighborhood Revitalization</option>
+              <option value="supply">Supply-Side Management</option>
+              <option value="coord">Program &amp; Vendor Coordination</option>
+              <option value="multi">Multiple / Not sure</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="f-msg">Brief Description</label>
+          <textarea id="f-msg" name="message" placeholder="A short summary of the scope, timing, and any specific compliance requirements."></textarea>
+        </div>
+        <div class="form-confirm" id="formConfirm">
+          Thanks &mdash; we've recorded your request and will respond within one business day at the email you provided.
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="btn-submit">Submit Inquiry →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <span class="mark">Eficas</span>
+          <span class="sub">Consulting</span>
+        </a>
+        <p>
+          A general vendor and contracted services provider for state, county, and local
+          government partners. Effective service. Trusted delivery.
+        </p>
+      </div>
+      <div class="foot-col">
+        <h5>Capabilities</h5>
+        <ul>
+          <li><a href="#capabilities">IT Services</a></li>
+          <li><a href="#capabilities">Construction</a></li>
+          <li><a href="#capabilities">Land Management</a></li>
+          <li><a href="#capabilities">Revitalization</a></li>
+          <li><a href="#capabilities">Supply Management</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="Eficas_Consulting_Capabilities_Statement.pdf" download>Capabilities PDF</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:contracts@EficasConsulting.com">contracts@EficasConsulting.com</a></li>
+          <li>[Phone Placeholder]</li>
+          <li>[City, State Placeholder]</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="disclaimer-block">
+      Eficas Consulting is an equal-opportunity contractor. We are a private vendor and not
+      a law firm; nothing on this site constitutes legal advice. Past performance references
+      are available on request.
+    </p>
+
+    <div class="foot-bottom">
+      <span>© <span id="yr">2026</span> Eficas Consulting LLC</span>
+      <span>EficasConsulting.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  (function(){
+    var btn = document.getElementById("menuBtn");
+    var nav = document.getElementById("primary-nav");
+    if (!btn || !nav) return;
+    btn.addEventListener("click", function(){
+      var open = nav.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    nav.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        nav.classList.remove("open");
+        btn.setAttribute("aria-expanded","false");
+      });
+    });
+  })();
+
+  // Year stamp
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  // Scroll-reveal
+  (function(){
+    if (!("IntersectionObserver" in window)) {
+      document.querySelectorAll(".fade-up").forEach(function(el){ el.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".fade-up").forEach(function(el){ io.observe(el); });
+  })();
+
+  // Form: front-end stub (no backend wired). Replace with your form handler.
+  (function(){
+    var form = document.getElementById("rfpForm");
+    var ok = document.getElementById("formConfirm");
+    if (!form) return;
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var required = form.querySelectorAll("[required]");
+      var valid = true;
+      required.forEach(function(el){
+        if (!el.value.trim()) { valid = false; el.style.borderBottomColor = "#d65a5a"; }
+        else { el.style.borderBottomColor = ""; }
+      });
+      var email = document.getElementById("f-email");
+      if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        valid = false; email.style.borderBottomColor = "#d65a5a";
+      }
+      if (!valid) return;
+      ok.classList.add("show");
+      form.reset();
+      ok.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(function(){ ok.classList.remove("show"); }, 8000);
+    });
+  })();
+</script>
+
+</body>
+</html>
