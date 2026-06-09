@@ -564,7 +564,8 @@
     border-top: 1px solid var(--rule-soft);
     display: grid;
     grid-template-columns: 40px 1fr;
-    gap: 18px;
+    grid-template-rows: auto auto;
+    gap: 0 18px;
     align-items: baseline;
   }
   .sig-right ol li:first-child { border-top: 0; }
@@ -574,6 +575,8 @@
     font-size: .82rem;
     color: var(--slate);
     letter-spacing: .08em;
+    grid-column: 1;
+    grid-row: 1;
   }
   .sig-right ol li strong {
     font-family: var(--font-display);
@@ -581,11 +584,16 @@
     font-size: 1.15rem;
     display: block;
     margin-bottom: 4px;
+    grid-column: 2;
+    grid-row: 1;
   }
   .sig-right ol li span {
     color: var(--ink-soft);
     font-size: .94rem;
     line-height: 1.5;
+    display: block;
+    grid-column: 2;
+    grid-row: 2;
   }
 
   /* ============================ ABOUT (05) =========================== */
