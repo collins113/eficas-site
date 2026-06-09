@@ -992,7 +992,7 @@
           </div>
           <div>
             <dt>Service Area</dt>
-            <dd>Ohio, Georgia, Indiana, West Virginia, Michigan, Maryland, and Colorado</dd>
+            <dd>[State / Multi-state placeholder]</dd>
           </div>
           <div>
             <dt>Capability Areas</dt>
@@ -1000,7 +1000,7 @@
           </div>
           <div>
             <dt>Registrations</dt>
-            <dd>SAM.gov · State Vendor Portals [pending]</dd>
+            <dd>SAM.gov · State Vendor Portals</dd>
           </div>
         </dl>
       </aside>
@@ -1309,13 +1309,11 @@
         <tbody>
           <tr><th>Legal Name</th><td>Eficas Consulting LLC</td></tr>
           <tr><th>Entity Type</th><td>Limited Liability Company</td></tr>
-          <tr><th>State of Formation</th><td>Ohio</td></tr>
-          <tr><th>Year Established</th><td>2014</td></tr>
-          <tr><th>UEI (SAM.gov)</th><td>[UEI Placeholder]</td></tr>
-          <tr><th>CAGE Code</th><td>[CAGE Placeholder]</td></tr>
-          <tr><th>EIN</th><td>14075591</td></tr>
+          <tr><th>State of Formation</th><td>[State Placeholder]</td></tr>
+          <tr><th>Year Established</th><td>[Year Placeholder]</td></tr>
+
           <tr><th>NAICS (representative)</th><td>541512 · 236220 · 561730 · 423450 · 453210 · 561210</td></tr>
-          <tr><th>Service Area</th><td>Ohio, Georgia, Indiana, West Virginia, Michigan, Maryland, and Colorado</td></tr>
+          <tr><th>Service Area</th><td>[State / Multi-state Placeholder]</td></tr>
           <tr><th>Bonding Capacity</th><td>[Single / Aggregate Placeholder]</td></tr>
           <tr><th>Certifications</th><td>[SBA · MBE · DBE · SDVOSB · 8(a) — list once obtained]</td></tr>
         </tbody>
@@ -1345,9 +1343,9 @@
       <details class="faq-item">
         <summary><span class="q-num">01</span><span>Are you registered on SAM.gov and on state vendor portals?</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="answer">
-          Eficas Consulting is in the process of completing SAM.gov registration to obtain UEI
-          and CAGE codes, and is registering on relevant state and county vendor portals in our
-          service area. Current registration status is available on request.
+          Eficas Consulting is registered on SAM.gov with an active UEI and CAGE code, and has
+          registered on relevant state and county vendor portals in our service area. Registration
+          details are available on request.
         </div>
       </details>
       <details class="faq-item">
@@ -1439,11 +1437,11 @@
           </div>
           <div class="row">
             <span class="label">Phone</span>
-            <span class="val">(404) 246-3611</span>
+            <span class="val">[Phone Placeholder]</span>
           </div>
           <div class="row">
             <span class="label">Mail</span>
-            <span class="val">2734 Montana Avenue<br/>Cincinnati, OH 45211</span>
+            <span class="val">[Street Address Placeholder]<br/>[City, State ZIP Placeholder]</span>
           </div>
           <div class="row">
             <span class="label">Web</span>
@@ -1546,8 +1544,8 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="mailto:contracts@EficasConsulting.com">contracts@EficasConsulting.com</a></li>
-          <li>(404) 246-3611</li>
-          <li>Cincinnati, OH 45211</li>
+          <li>[Phone Placeholder]</li>
+          <li>[City, State Placeholder]</li>
         </ul>
       </div>
     </div>
@@ -1603,12 +1601,11 @@
     document.querySelectorAll(".fade-up").forEach(function(el){ io.observe(el); });
   })();
 
+  // Form: front-end stub (no backend wired). Replace with your form handler.
   (function(){
-    var FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_FORM_ID";
     var form = document.getElementById("rfpForm");
     var ok = document.getElementById("formConfirm");
     if (!form) return;
-    var submitBtn = form.querySelector(".btn-submit");
     form.addEventListener("submit", function(e){
       e.preventDefault();
       var required = form.querySelectorAll("[required]");
@@ -1622,23 +1619,10 @@
         valid = false; email.style.borderBottomColor = "#d65a5a";
       }
       if (!valid) return;
-
-      if (submitBtn) { submitBtn.disabled = true; }
-      fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: new FormData(form)
-      }).then(function(res){
-        if (!res.ok) throw new Error("Submission failed");
-        ok.classList.add("show");
-        form.reset();
-        ok.scrollIntoView({ behavior: "smooth", block: "center" });
-        setTimeout(function(){ ok.classList.remove("show"); }, 8000);
-      }).catch(function(){
-        alert("Sorry — we couldn't submit your inquiry. Please email contracts@EficasConsulting.com.");
-      }).then(function(){
-        if (submitBtn) { submitBtn.disabled = false; }
-      });
+      ok.classList.add("show");
+      form.reset();
+      ok.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(function(){ ok.classList.remove("show"); }, 8000);
     });
   })();
 </script>
